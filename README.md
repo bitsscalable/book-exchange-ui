@@ -5,7 +5,7 @@ Ensure you have the following installed on your system:
 
 - [Docker](https://www.docker.com/) (for containerization)
 
-
+- Setup API from https://github.com/bitsscalable/book-exchange-api
 
 ## Getting Started
 
@@ -20,11 +20,11 @@ cd book-exchange-ui
 
 docker build -t book-exchange-ui .
 
-### Step 2: Run the container
+### Step 3: Run the container
 
-docker run -d -p 8000:80 book-exchange-ui
+docker run -d -p 4200:80 book-exchange-ui
 
-### Step 1: Access the Application
+### Step 4: Access the Application
 
-http://localhost:8000
+http://localhost:4200
 

@@ -21,6 +21,7 @@ FROM nginx:alpine AS production-stage
 # Copy the build output to Nginx's default public directory
 COPY --from=build-stage /app/dist/frontend/browser /usr/share/nginx/html
 
+COPY default.conf /etc/nginx/conf.d
 # Expose the default Nginx port
 EXPOSE 80
 
