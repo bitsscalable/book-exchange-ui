@@ -1,0 +1,16 @@
+.overview{
+    padding: 5%;
+    padding-bottom: 1%;
+}
+
+.row{
+    padding-bottom: 2%;
+}
+
+.search{
+    align-self: right;
+}
+
+.label{
+    padding-right: 2%;
+}

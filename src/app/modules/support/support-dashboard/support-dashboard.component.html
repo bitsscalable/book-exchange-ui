@@ -1,0 +1,25 @@
+<div class="overview">
+    <p-card>
+        <p-tabView >
+            <p-tabPanel>
+                <ng-template pTemplate="header">
+                        <span class="tab">
+                            New Ticket
+                        </span>
+                </ng-template>
+               <app-new-ticket></app-new-ticket>
+            </p-tabPanel>
+            <p-tabPanel header="Header II">
+                <ng-template pTemplate="header">
+                       
+                        <span class="font-bold white-space-nowrap m-0 tab">
+                            Resolved Tickets
+                        </span>
+                </ng-template>
+               <app-resolved-tickets></app-resolved-tickets>
+            </p-tabPanel>
+            
+        </p-tabView>
+    
+    </p-card>
+</div>

@@ -1,0 +1,20 @@
+.login-page {
+    height: 100vh; /* Make sure the background covers the full viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('/assets/login-page-bg.jpeg') no-repeat center center fixed;
+    background-size: cover; /* Ensures the SVG fits the screen perfectly */
+}
+
+
+.login-form {
+    background-color: rgba(255, 255, 255, .6); /* Add some background to the form */
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.button{
+    padding-left: 1rem;
+}

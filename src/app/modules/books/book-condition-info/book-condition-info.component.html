@@ -1,0 +1,54 @@
+
+<form [formGroup]="addBookForm">
+    <div class="row">
+        <div class="col-sm-6">
+            <label class="label" for="bookCondition">Condition of the book:</label>
+    
+            <p-rating stars="7" formControlName="bookCondition"> 
+    
+                <ng-template pTemplate="onicon">
+                    <img src="https://cdn-icons-png.flaticon.com/256/3145/3145765.png" width="50px" height="50px" />
+                </ng-template>
+                <ng-template pTemplate="officon">
+                    <img src="https://primefaces.org/cdn/primeng/images/demo/rating/custom-icon.png" width="50px"
+                        height="50px" />
+                </ng-template>
+            </p-rating>
+        </div>
+        <div class="col-sm-6 days">
+    
+            <label class="label" for="lendBookFor">Duriation you are ready to lend the book:</label>
+            <input type="text" pInputText  class="w-full mb-3" placeholder="In days"
+             formControlName="lendBookFor"/>
+        </div>
+    
+    </div>
+    <div class="row">
+        <div class="col-sm-2 days">
+            <label class="label" for="pincode">Pickup pincode:</label>
+    
+        </div>
+        <div class="col-sm-4">
+            <p-inputOtp  [length]=6 [integerOnly]="true" (onChange)="getArea()" formControlName="pincode"/>
+        </div>
+        <!-- <div class="col-sm-4">
+            Area: {{area}}
+        </div> -->
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <label class="label" for="isDeliverable">Can be delivered?</label>
+            <p-radioButton name="isDeliverable" value="1"  formControlName="isDeliverable"/>
+            <label for="isDeliverable" class="ml-2">
+                Yes
+            </label>
+            <p-radioButton name="isDeliverable" value="0"  formControlName="isDeliverable"/>
+            <label for="isDeliverable" class="ml-2">
+                No
+            </label>
+        </div>
+    
+    
+    </div>
+    
+</form>

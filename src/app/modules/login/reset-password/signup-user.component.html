@@ -1,0 +1,85 @@
+<div class="login-page">
+    <div class="login-form">
+        <div class="header">Sign Up</div>
+        <form [formGroup]="signUpForm">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <p-tag icon="pi pi-user" [value]="email" severity="secondary" />
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <p-floatLabel>
+                            <input pInputText formControlName="firstName" />
+                            <label for="firstName">First Name</label>
+                        </p-floatLabel>
+                    </div>
+                    <div class="col-sm-4">
+                        <p-floatLabel>
+                            <input pInputText formControlName="middleName" />
+                            <label for="middleName">Middle Name</label>
+                        </p-floatLabel>
+                    </div>
+                    <div class="col-sm-4">
+                        <p-floatLabel>
+                            <input pInputText formControlName="lastName" />
+                            <label for="lastName">Last Name</label>
+                        </p-floatLabel>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="container">
+                <div class="row label">
+                    <div class="col-sm-6">
+                        <p-floatLabel>
+                            <p-password formControlName="password" [feedback]="true" ng-change="change()" />
+                            <label for="password">Password</label>
+                        </p-floatLabel>
+                    </div>
+                    <div class="col-sm-6">
+                        <p-floatLabel>
+                            <p-password formControlName="confirmPassword" [feedback]="false" />
+                            <label for="confirmPassword">Confirm Password</label>
+                        </p-floatLabel>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <p-button label="Update Password" type="submit" [disabled]="signUpForm.invalid" severity="secondary"
+                    icon="pi pi-check" [outlined]="false" size="small" [loading]="isloading" (onClick)="submitForm()" />
+                </div>
+              </div>
+              
+
+            <div class="label">
+            
+            </div>
+
+        </form>
+    </div>
+
+
+
+</div>
+<p-toast />

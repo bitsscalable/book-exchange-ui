@@ -1,0 +1,35 @@
+<div class="overview">
+    <p-card header="Search a book">
+        <div class="row">
+            <div class="col-sm-4">
+                <label class="label" for="Genre">Genre(s)</label>
+                <p-multiSelect [options]="genres" [(ngModel)]="selectedGeneres"  [filter]="true"
+                    optionLabel="name" placeholder="Select"  />
+            </div>
+            <div class="col-sm-4">
+                <label class="label" for="Author">Author</label>
+                <input pInputText id="Author" class="box" aria-describedby="username-help" [(ngModel)]="author" />
+            </div>
+            <div class="col-sm-4">
+                <label class="label" for="Title">Title</label>
+                <input pInputText id="Title" class="box" aria-describedby="username-help" [(ngModel)]="title" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <label class="label" for="pincode">Pickup pincode:</label>
+
+            </div>
+            <div class="col-sm-4">
+                <p-inputOtp [(ngModel)]="pincode" (onChange)="getArea()" [length]=6 [integerOnly]="true" />
+            </div>
+            <div class="col-sm-4">
+                Area: {{area}}
+            </div>
+        </div>
+        <p-button class="search"  (onClick)="search()" label="Search" />
+    </p-card>
+</div>
+<app-available-books *ngIf="data" [searchFields]="data"></app-available-books>
+
+<p-toast/>

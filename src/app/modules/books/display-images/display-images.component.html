@@ -1,0 +1,67 @@
+<p-dialog header="Request Book" [modal]="true" [(visible)]="visible" [style]="{ width: '60rem' }" 
+[breakpoints]="{ '1199px': '95vw', '605px': '90vw' }">
+
+    <div class="row">
+        
+        <!-- comments -->
+        
+
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-sm-4">
+                    <b>Book Summary:</b>
+                </div>
+                <div class="col-sm-8">
+                    {{data?.summary}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <b>Book Available for:</b>
+                </div>
+                <div class="col-sm-8">
+                    {{data?.lendBookFor}} Days
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <b>Book Owned By:</b>
+                </div>
+                <div class="col-sm-8">
+                    {{data?.uploadedBy}}
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div class="col-sm-4">
+           
+            
+            <div class="row">
+                    <!-- <label class="label" for="lendBookFor">Pick Up Date</label>
+                    <p-calendar [(ngModel)]="date" /> -->
+                
+            </div>
+            <div class="row">
+                <!-- <label class="label" for="lendBookFor">Comments</label>
+                <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="comments">
+                    </textarea> -->
+                    
+            </div>
+            <div class="row">
+                <button (click)="sendRequest(data)" pButton pRipple label="Request Book" class="p-button-success">
+                </button>
+            </div>
+            
+        </div>
+        
+    </div>
+
+
+
+</p-dialog>
+
+<p-toast />

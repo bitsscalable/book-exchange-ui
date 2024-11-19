@@ -1,0 +1,30 @@
+<div class="overview">
+    <p-card header="Bought a new book??">
+<div class="card">
+    <p-stepper orientation="vertical">
+        <p-stepperPanel header="Book Info">
+            <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
+                <div class="flex flex-column h-12rem">
+                    <app-book-info [addBookForm]="addBookForm"></app-book-info>
+                </div>
+                <div class="flex py-4">
+                    <p-button label="Next" (onClick)="nextCallback.emit()" />
+                </div>
+            </ng-template>
+        </p-stepperPanel>
+        <p-stepperPanel header="Condition Info">
+            <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback" let-index="index">
+                <div class="flex flex-column h-12rem">
+                    <app-book-condition-info [addBookForm]="addBookForm"></app-book-condition-info>
+                </div>
+                <div class="flex py-4 gap-2">
+                    <p-button label="Back" severity="secondary" (onClick)="prevCallback.emit()" />
+                    <p-button label="Next" (onClick)="nextCallback.emit()" />
+                </div>
+            </ng-template>
+        </p-stepperPanel>
+        
+    </p-stepper>
+</div>
+</p-card>
+</div>

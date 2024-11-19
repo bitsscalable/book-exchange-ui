@@ -1,0 +1,25 @@
+<div class="overview" *ngIf="chat">
+  <div class="chat-card">
+    <div class="chat-header">
+      <div class="h2">{{chat?.name}}</div>
+    </div>
+    <div class="chat-body">
+      <div *ngFor="let message of chatMessages" class="message" [ngClass]="message.type">
+        <p>{{message.content}}</p>
+      </div>
+    </div>
+    <div class="chat-footer">
+      <input placeholder="Type your message" type="text" [(ngModel)]="userMessage">
+      <p-button label="Send" (onClick)="sendMessage()"  />
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <p-button label="Send" (onClick)="sendMessage()"  />
+      </div>
+      <div class="col-sm-6">
+        <p-button label="Send" (onClick)="sendMessage()"  />
+      </div>
+    </div>
+    
+  </div>    
+</div>

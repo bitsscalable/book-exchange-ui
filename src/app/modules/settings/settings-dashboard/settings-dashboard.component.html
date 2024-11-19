@@ -1,0 +1,35 @@
+<div class="overview">
+    <form [formGroup]="settingsForm">
+
+        <p-card header="Settings">
+            <div class="row">
+                <div class="col">
+                    <label class="label" for="languages">Prefered Languages:</label>
+                    <p-multiSelect [options]="languages" formControlName="selectedLanguages"
+                         variant="filled" [filter]="true" optionLabel="name"
+                        placeholder="Select languages" />
+                </div>
+                <div class="col">
+                    <label class="label" for="genres">Favourite Genres:</label>
+                    <p-multiSelect [options]="languages"  variant="filled" [filter]="true"
+                    formControlName="selectedGenres"  optionLabel="name" placeholder="Select genres" />
+                </div>
+            </div>
+            <div class="row">
+                <p-button label="Update" severity="primary" (onClick)="updatePreferences()" />
+            </div>
+
+
+            <div class="row note">
+                <span>
+                    <b>Note:</b> Please click <a routerLink="/addBook"> here</a> and update the books you currently own.
+                    When everyone does it, it will make our community more efficient.
+                </span>
+            </div>
+        </p-card>
+    </form>
+
+
+</div>
+
+<p-toast />

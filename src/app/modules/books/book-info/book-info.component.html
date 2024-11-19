@@ -1,0 +1,54 @@
+<form [formGroup]="addBookForm">
+<div class="row">
+    <div class="col-sm-4">
+        <label class = "label" for="title">Title</label>
+        <input 
+            pInputText
+            id="username" class="box" 
+            aria-describedby="username-help" 
+            
+             formControlName="title"/>
+    </div>
+    <div class="col-sm-4">
+        <label class = "label"  for="genres">Genre(s)</label>
+        <p-multiSelect 
+        [options]="genres"
+        [(ngModel)]="selectedGenres" 
+        variant="filled"
+        [filter]="true" 
+        optionLabel="name" 
+        placeholder="Select" formControlName="genres"/>
+    </div>
+    <div class="col-sm-4">
+        <label class = "label"  for="author">Author</label>
+        <input 
+            pInputText
+            id="username" class="box"
+            aria-describedby="username-help" 
+            formControlName="author"/>
+    </div>
+   
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <label class = "label"  for="categories">Category</label>
+        <p-multiSelect 
+        [options]="genres" class="box"
+        [(ngModel)]="selectedGenres" 
+        variant="filled"
+        [filter]="true" 
+        optionLabel="name" 
+        placeholder="Select" formControlName="categories"/>
+    </div>
+    <div class="col-sm-8">
+        <label class = "label"  for="summary">Summary</label>
+            <textarea class="box"
+                id="float-input" 
+                rows="5" cols="60" 
+                pInputTextarea formControlName="summary">
+            </textarea>
+    </div>
+    
+   
+</div>
+</form>

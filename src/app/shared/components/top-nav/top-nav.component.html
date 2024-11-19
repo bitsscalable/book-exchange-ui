@@ -1,0 +1,39 @@
+<div >
+  <mat-toolbar color="secondary" class="mat-elevation-z8" *ngIf="sidebarVisible">
+    <span><b>Library</b></span>
+    <span class="example-spacer"></span>
+    <button [matMenuTriggerFor]="lvl1master" mat-button style="margin-left: auto;"><b>{{username}}</b><mat-icon>face</mat-icon><mat-icon>keyboard_arrow_down</mat-icon></button>
+    <mat-menu #lvl1master="matMenu">
+        <button routerLink="/settings" mat-menu-item>Settings</button>
+        <button (click)="logout()" mat-menu-item>Logout</button>
+    </mat-menu>
+  
+   
+   
+      
+   
+  </mat-toolbar>
+  <div  >
+    <mat-drawer-container autosize >
+      <mat-drawer #drawer opened="true" mode="side" position="start" *ngIf="sidebarVisible">
+      <mat-nav-list>
+        <ng-container *ngFor="let nav of navItems">
+            <mat-list-item >
+                <button [routerLink]="nav.route" mat-button><mat-icon>{{nav.icon}}</mat-icon> {{nav.name}}</button>
+            </mat-list-item>
+        </ng-container>
+           
+        
+      </mat-nav-list>
+      </mat-drawer>
+      <mat-drawer-content>
+          <div style="text-align: center;min-height: 900px;">
+    
+              <router-outlet></router-outlet>
+              </div>
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </div>
+  {{username}}
+  
+</div>

@@ -1,0 +1,32 @@
+<div class="login-page">
+    <div class="login-form">
+        <div class="header" >Welcome!</div>
+        <form [formGroup]="registerForm">
+            <div class="label">
+                <p-floatLabel>
+                    <input pInputText d="username" formControlName="username" />
+                    <label for="username">Username</label>
+                </p-floatLabel>
+
+            </div>
+            <div class="label">
+                <p-floatLabel>
+                    <p-password formControlName="password" [feedback]="false" />
+                    <label for="password">Password</label>
+                </p-floatLabel>
+            </div>
+            <div class="container">
+                <p-button label="Login" icon="pi pi-check"  size="small" [loading]="isloading" [disabled]="registerForm.invalid" (onClick)="load()" />
+            </div>
+            
+            <p-button label="Forgot Password or new user?" size="small" [link]="true" routerLink="/signup" />
+
+
+
+        </form>
+
+
+    </div>
+
+</div>
+<p-toast />
