@@ -22,7 +22,6 @@ constructor(private fb: FormBuilder, private _service : BooksService, private _a
       genres: [[],[Validators.required]],
       author: [,[Validators.required]],
       summary: [,[Validators.required,Validators.minLength(20)]],
-      categories: [[],[Validators.required]],
       bookCondition:[0,[Validators.required]],
       lendBookFor:[,[Validators.required]],
       pincode:[,[Validators.required]],
@@ -36,11 +35,15 @@ constructor(private fb: FormBuilder, private _service : BooksService, private _a
     const formData = new FormData();
   
     const bookData = this.addBookForm.getRawValue();
-    bookData.categories = this.addBookForm.controls['categories'].value.map((element: any) => element.code);
     bookData.genres = this.addBookForm.controls['genres'].value.map((element: any) => element.code);
 
     this._service.addBook(bookData).subscribe(res => {
-      this._alert.add({severity: 'success', summary: 'Book Added', detail: 'Book added successfully' })
+        this._alert.add({severity: 'success', summary: 'Book Added', detail: 'Book added successfully' })
+        setTimeout(() => {
+          window.location.reload();
+        }, 300);
+        
+      
     });
   }
    

@@ -13,7 +13,6 @@ import { MessageService } from 'primeng/api';
 export class SignupComponent {
 
   emailid: String = '';
-  olduser = false;
   verified = false;
 loading = false;
 
@@ -25,7 +24,6 @@ loading = false;
     this.loading = !this.loading
     this.verified = true;
     this._service.verifyEmail(this.emailid).subscribe((res)=>{
-      this.olduser = res;
         this._alert.add({ severity: 'success', summary: 'Success', detail: 'Login Credentials have been sent to your email.' })
     })
     this.loading = !this.loading
@@ -36,8 +34,8 @@ loading = false;
 
 @Component({
   selector: 'app-verification-failed',
-  template:`<h1>Hello, World!</h1>
-    <p>This is an inline template.</p>`,
+  template:`<h1>Oops!</h1>
+    <p>Verification Failed. Please try again.</p>`,
   styleUrl: './signup.component.css'
 })
 export class VerificationFailedComponent{

@@ -24,44 +24,7 @@ export class BookConditionInfoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getArea(){
-    if(this.addBookForm.controls['pincode'].value.length===6){
-      this.getAreaDetails(this.addBookForm.controls['pincode'].value+'')
-    }
-  }
-
-  getAreaDetails(pincode:string) {
-    const url = new URL("https://cors-anywhere.herokuapp.com/https://api.zipcodestack.com/v1/search");
-
-    const params = {
-        codes: pincode,
-        country: "in"
-    };
-
-    url.searchParams.append('codes', params.codes);
-    url.searchParams.append('country', params.country);
-
-    const headers = {
-        "apikey": pvt.API_KEYS.ZIP_CODE_SERVICE,
-        "Accept": "application/json",
-        'x-requested-with': 'XMLHttpRequest',
-    };
-
-    fetch(url, {
-        method: "GET",
-        headers,
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        const obj = data;
-        const location = obj['results'][pincode][0]['state'] +' , '+ obj['results'][pincode][0]['city'];
-        this.area = location;
-    })
-    .catch(error => {
-        console.error("Error fetching data:", error);
-    });
-}
+  
 
 
 }

@@ -2,21 +2,16 @@
     <div class="login-form">
 
 
-        <div class="flex flex-column gap-2 mb-3" *ngIf="!verified"> 
+        <div class="flex flex-column gap-2 mb-3" > 
             <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="emailid" />
-            <p-button class="button" label="Verify" icon="pi pi-check" [loading]="loading" size="small"  severity="success" (onClick)="load()" />
+            <p-button class="button" label="Verify" icon="pi pi-check" [loading]="verified" size="small"  severity="success" (onClick)="load()" />
             <br>
             <small id="username-help">
                 Please verify your email ID first.
             </small>
         </div>
         <br>
-        <div class="flex flex-column gap-2 mb-3" *ngIf="verified && olduser">
-            <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="emailid" />
-        </div>
-        <div class="flex flex-column gap-2 mb-3" *ngIf=" verified && !olduser">
-            <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="emailid" />
-        </div>
+        
        
 
 

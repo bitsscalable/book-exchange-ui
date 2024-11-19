@@ -22,14 +22,20 @@ export class ResetPasswordComponent implements OnInit{
   constructor(private fb: FormBuilder, private http: HttpClient,private messageService: MessageService,
     private router: Router, private _service: AuthorizationService,private route: ActivatedRoute){
     this.registerForm = this.fb.group({
-      password: [null, [Validators.required,Validators.minLength(6)]],
-      confirmPassword: [null, [Validators.required,Validators.minLength(6)]]
+      password: [ ,[Validators.required,Validators.minLength(6)]],
+      confirmPassword: [ ,[Validators.required,Validators.minLength(6)]]
       
   },{ validator: this.passwordMatchValidator});
   }
   ngOnInit(): void {
     
-    this.email = this.route.snapshot.queryParamMap.get('email');
+    if(this.route.snapshot.queryParamMap.get('email')===null){
+      this.email = sessionStorage.getItem('username')
+    }else{
+      this.email = this.route.snapshot.queryParamMap.get('email');
+    }
+
+    
     console.log(this.email); 
 
   }
@@ -48,6 +54,7 @@ export class ResetPasswordComponent implements OnInit{
   load(){
     this.isloading = true;
     const data = this.registerForm.getRawValue();
+    console.log('data',data);
     data.email = this.email;
     this._service.updatePassword(data).subscribe((res)=>{
       this.messageService.add({ severity: 'success', summary: 'Password Updated Successfully', detail: 'You can go ahead and login.' })
