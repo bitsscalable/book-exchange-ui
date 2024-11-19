@@ -29,11 +29,12 @@ isLoading = false;
 
   ngOnInit() {
       this.genres = [
-          { name: 'Horrer', code: 'NY' },
-          { name: 'Rom-Com', code: 'RM' },
-          { name: 'Fiction', code: 'LDN' },
-          { name: 'Fantacy', code: 'IST' },
-          { name: 'Scifi', code: 'PRS' }
+        { name: 'Horrer', code: 'HR' },
+        { name: 'Rom-Com', code: 'RC' },
+        { name: 'Fiction', code: 'FI' },
+        { name: 'Fantacy', code: 'FA' },
+        { name: 'Scifi', code: 'SF' },
+        { name: 'Non-Fiction', code: 'NF' },
       ];
   }
 

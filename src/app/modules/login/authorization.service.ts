@@ -37,7 +37,9 @@ export class AuthorizationService {
 
   public updatePassword(form : FormData):Observable<any>{
     let params = form;
-    return this._rest.post(Endpoints.POST.UPDATE_PASSWORD,{ params: params });
+    return this._rest.post(Endpoints.POST.UPDATE_PASSWORD,form, {
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 
   public signUpNewUser(form : FormData):Observable<any>{

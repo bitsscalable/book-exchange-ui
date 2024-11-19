@@ -4,7 +4,7 @@
     <span class="example-spacer"></span>
     <button [matMenuTriggerFor]="lvl1master" mat-button style="margin-left: auto;"><b>{{username}}</b><mat-icon>face</mat-icon><mat-icon>keyboard_arrow_down</mat-icon></button>
     <mat-menu #lvl1master="matMenu">
-        <button routerLink="/settings" mat-menu-item>Settings</button>
+        <button routerLink="/resetPassword" mat-menu-item>Reset Password</button>
         <button (click)="logout()" mat-menu-item>Logout</button>
     </mat-menu>
   

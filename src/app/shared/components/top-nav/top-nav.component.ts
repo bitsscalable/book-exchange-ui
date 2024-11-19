@@ -20,17 +20,20 @@ navItems: any;
     
     
     this.router.events.subscribe(() => {
-      this.sidebarVisible = !(this.router.url === '/login/login' || this.router.url === '/signup' || this.router.url === '/signup-user');
-      if(!sessionStorage.getItem('username')){
-        this.dashboardService.getUserName().subscribe(res=>{
-          sessionStorage.setItem('username',res);
-          this.username = res;
-        })
-      }else{
-        this.username = sessionStorage.getItem('username');
-      }
+      this.sidebarVisible = !(this.router.url === '/login/login' || this.router.url === '/signup' ||
+         this.router.url.includes('/signup-user') || this.router.url.includes('/resetPassword') ||this.router.url.includes('/verificationFailed'));
+      
       
     });
+    console.log('sessionStorage.getItem()',sessionStorage.getItem('username'))
+    if(sessionStorage.getItem('username') === null && !this.sidebarVisible){
+      this.dashboardService.getUserName().subscribe(res=>{
+        sessionStorage.setItem('username',res);
+        this.username = res;
+      })
+    }else{
+      this.username = sessionStorage.getItem('username');
+    }
     this.navItems= [
       { name: 'Dashboard', route: '/dashboard', icon: 'dashboard', call:'' },
       { name: 'Books', route: '/books', icon: 'books', call:'' },
