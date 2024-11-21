@@ -3,6 +3,7 @@ import { AuthorizationService } from '../authorization.service';
 import { AlertModule } from '../../../shared/alert/alert.module';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,17 +17,20 @@ export class SignupComponent {
   verified = false;
 loading = false;
 
-  constructor(private _service:AuthorizationService, private _alert: MessageService){
+  constructor(private _service:AuthorizationService, private _alert: MessageService, private router: Router){
     
   }
 
   load(){
     this.loading = !this.loading
     this.verified = true;
-    this._service.verifyEmail(this.emailid).subscribe((res)=>{
-        this._alert.add({ severity: 'success', summary: 'Success', detail: 'Login Credentials have been sent to your email.' })
-    })
+    // this._service.verifyEmail(this.emailid).subscribe((res)=>{
+    //     this._alert.add({ severity: 'success', summary: 'Success', detail: 'Login Credentials have been sent to your email.' })
+    // })
+
     this.loading = !this.loading
+    this.router.navigate(['/signup-user'], { queryParams: { email: this.emailid }});
+
   }
 
   

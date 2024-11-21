@@ -23,7 +23,7 @@ export class AvailableBooksComponent  implements OnInit{
 
   visible = false;
   row!:any;
-  displayedColumns: string[] = ['title','author', 'bookCondition', 'isDeliverable', 'pincode'];
+  displayedColumns: string[] = ['title','author', 'bookCondition', 'isDeliverable', 'pincode','uploadedby'];
   data = data;
   clickedRows = new Set<BookDetails>();
 
