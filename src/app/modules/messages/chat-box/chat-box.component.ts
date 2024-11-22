@@ -16,10 +16,7 @@ export class ChatBoxComponent implements OnInit {
   constructor(private socketService: RequestsService) { }
 
   ngOnInit(): void {
-    const message =   {'username': 'userA', 'peer': 'userB'};  
-
-    this.chatHistory.push(this.message); 
-
+  
     // Send the message to the server via WebSocket
     this.socketService.join();
 
@@ -29,6 +26,8 @@ export class ChatBoxComponent implements OnInit {
       console.log('Received message:', data);
       this.chatHistory.push(data);  // Add received message to chat history
     });
+
+    
   }
 
   // Function to send a new message
@@ -39,6 +38,7 @@ export class ChatBoxComponent implements OnInit {
       message: this.message,
       timestamp: new Date().toISOString(),
     };
+    
     this.chatHistory.push(this.message); 
 // Listen to incoming messages
 this.socketService.getMessages().subscribe((data) => {
@@ -50,7 +50,7 @@ this.socketService.getMessages().subscribe((data) => {
       type: 'new_message',
       payload: message
     }
-    this.socketService.sendMessage(msg);
+    this.socketService.sendMessage(message);
     
 
     // this.message = ''; // Clear input after sending the message

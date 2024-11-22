@@ -10,6 +10,7 @@ import { io, Socket } from 'socket.io-client';
 export class RequestsService {
   private messagesSubject: Subject<any> = new Subject<any>();
 socket: any;
+
   constructor() {
      this.socket = io('http://3.94.192.80:5000', {
       transports: ['websocket'], // Ensure we're using WebSocket transportwithCredentials: true
@@ -42,9 +43,11 @@ socket: any;
   sendMessage(message: any): void {
     console.log('paylod',JSON.stringify(message))
     
-    this.socket.emit(JSON.stringify(message))
+    this.socket.emit('new_message',message)
     // this.socket.send(JSON.stringify(message));
   }
+
+  
 
   join():void{
     this.socket.emit('join', {
@@ -55,6 +58,13 @@ socket: any;
 
   // Observable to receive messages from the WebSocket
   getMessages(): Observable<any> {
+    
+    this.socket.on('chat_history', (data: any) => {
+      console.log('Chat history received:', data);
+      this.messagesSubject.next(data); // Push received data to the Subject
+  });
+
+
     return this.messagesSubject.asObservable();
   }
 
