@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 
 export interface Chats {
   name: string;
@@ -7,25 +8,33 @@ export interface Chats {
   unread: boolean;
 }
 
-const ELEMENT_DATA: Chats[] =  [
+const chats: Chats[] =  [
+  { name: 'Chat A', lastMessage: 'Hello there!',book:'abc', unread: true },
+  { name: 'Chat B', lastMessage: 'How are you?',book:'abc', unread: false },
+  { name: 'Chat C', lastMessage: 'Are you coming?',book:'abc', unread: true },
+  { name: 'Chat A', lastMessage: 'Hello there!',book:'abc', unread: true },
+  { name: 'Chat B', lastMessage: 'How are you?',book:'abc', unread: false },
+  { name: 'Chat C', lastMessage: 'Are you coming?',book:'abc', unread: true },
+  { name: 'Chat A', lastMessage: 'Hello there!',book:'abc', unread: true },
+  { name: 'Chat B', lastMessage: 'How are you?',book:'abc', unread: false },
+  { name: 'Chat C', lastMessage: 'Are you coming?',book:'abc', unread: true },
   { name: 'Chat A', lastMessage: 'Hello there!',book:'abc', unread: true },
   { name: 'Chat B', lastMessage: 'How are you?',book:'abc', unread: false },
   { name: 'Chat C', lastMessage: 'Are you coming?',book:'abc', unread: true },
   { name: 'Chat D', lastMessage: 'Let me know when you get this',book:'abc', unread: false }
 ];
 
-
 @Component({
   selector: 'app-messages-dashboard',
   templateUrl: './messages-dashboard.component.html',
   styleUrl: './messages-dashboard.component.css'
 })
-export class MessagesDashboardComponent {
-  displayedColumns: string[] = ['name', 'lastMessage','book', 'unread'];
-  dataSource = ELEMENT_DATA;
+export class MessagesDashboardComponent implements OnInit{
+  displayedColumns: string[] = ['name'];
+  dataSource = chats;
+
   clickedRows = new Set<Chats>();
   chat : any;
-
 
   rowClicked(row: Chats){
     this.clickedRows.clear();
@@ -33,7 +42,9 @@ export class MessagesDashboardComponent {
     this.clickedRows.add(row);
   }
 
-  tabChange(tab:Number){
-    console.log(tab)
-  }
+  items!: string[];
+
+    ngOnInit() {
+        this.items = Array.from({ length: 1000 }).map((_, i) => `Item #${i}`);
+    }
 }

@@ -38,7 +38,7 @@ navItems: any;
       { name: 'Dashboard', route: '/dashboard', icon: 'dashboard', call:'' },
       { name: 'Books', route: '/books', icon: 'books', call:'' },
       { name: 'Requests', route: '/requests', icon: 'pending',call:'' },
-      // { name: 'Settings', route: '/settings', icon: 'settings',call:'' },
+      { name: 'Messages', route: '/messages', icon: 'messages',call:'' },
       // { name: 'Support', route: '/support', icon: 'contact_support',call:'' },
       { name: 'Signout', route: '/login', icon: 'logout',call:'logout()'},
     ];
