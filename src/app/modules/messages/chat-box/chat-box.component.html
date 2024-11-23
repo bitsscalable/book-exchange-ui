@@ -1,18 +1,22 @@
-<div class="overview" >
+<div class="overview" *ngIf="chat">
   <div class="chat-card">
     <div class="chat-header">
-      <div class="h2">{{peer}}</div>
+      <div class="h2">{{chat}}</div>
     </div>
     <div class="chat-body">
-      <div *ngFor="let message of chatHistory" class="message" [ngClass]="'outgoing'">
-        <p>{{message}}</p>
+      <div *ngFor="let message of chatHistory[0]" class="message" [ngClass]="message.recipient===peer?'outgoing':'incoming'">
+        <p>{{message.message}}</p>
       </div>
     </div>
     <div class="chat-footer">
       <input placeholder="Type your message" type="text" [(ngModel)]="message" (keyup.enter)="sendMessage()" >
       <p-button label="Send" (onClick)="sendMessage()"  />
     </div>
-    {{chatHistory|json}}
+    <!-- {{chatHistory|json}}
+    <br> -->
+    chat:{{chat}}
+    <br>
+    {{chatHistory[0]|json}}
     <!-- <div>
       <h1>Chat App</h1>
       <div *ngFor="let message of messages">

@@ -12,10 +12,6 @@ const routes: Routes = [
         canActivate: [authGuard]
       },
       {
-        path: 'books', loadChildren: () => import('./modules/books/books.module').then(m => m.BooksModule),
-        canActivate: [authGuard]
-      },
-      {
         path: 'requests', loadChildren: () => import('./modules/requests/requests.module').then(m => m.RequestsModule),
         canActivate: [authGuard]
       },

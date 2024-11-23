@@ -3,6 +3,8 @@ import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 import { Observable, Subject } from 'rxjs';
 import { Constants } from '../../shared/variables/constants';
 import { io, Socket } from 'socket.io-client';
+import { HttpClient } from '@angular/common/http';
+import { Endpoints } from '../../shared/variables/endpoints';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class RequestsService {
   private messagesSubject: Subject<any> = new Subject<any>();
 socket: any;
 
-  constructor() {
+  constructor(private _rest:HttpClient) {
      this.socket = io('http://3.94.192.80:5000', {
       transports: ['websocket'], // Ensure we're using WebSocket transportwithCredentials: true
           });
@@ -68,54 +70,13 @@ socket: any;
     return this.messagesSubject.asObservable();
   }
 
-  // Close the WebSocket connection
+
   closeConnection(): void {
     this.socket.close();
   }
 
-  // private socket$!: WebSocketSubject<any>;
-  // private messageSubject = new Subject<string>();
+  getActiveChats(): Observable<any> {
+    return this._rest.get<any>('http://3.94.192.80:5000/api/messages/userA/channels');
+  }
 
-  // constructor() {}
-
-  // connect(): void {
-  //   this.socket$ = webSocket({
-  //     url: Constants.WEB_SOCKET_URL,
-  //     deserializer: (event) => event.data, // Pass raw data as-is
-  //     openObserver: {
-  //       next: () => console.log('WebSocket connection established'),
-  //     },
-  //     closeObserver: {
-  //       next: () => console.log('WebSocket connection closed'),
-  //     },
-  //   });
-
-  //   this.socket$.subscribe({
-  //     next: (message) => {
-  //       // Handle plain strings or JSON objects
-  //       try {
-  //         const parsedMessage = JSON.parse(message); // If it's valid JSON
-  //         console.log('Parsed JSON message:', parsedMessage);
-  //         this.messageSubject.next(parsedMessage);
-  //       } catch (error) {
-  //         console.warn('Non-JSON message received:', message); // If it's just a string
-  //         this.messageSubject.next(message);
-  //       }
-  //     },
-  //     error: (err) => console.error('WebSocket error:', err),
-  //     complete: () => console.log('WebSocket connection completed'),
-  //   });
-  // }
-
-  // sendMessage(message: any): void {
-  //   this.socket$.next(message);
-  // }
-
-  // close(): void {
-  //   this.socket$.complete();
-  // }
-
-  // getMessages(): Observable<string> {
-  //   return this.messageSubject.asObservable();
-  // }
 }

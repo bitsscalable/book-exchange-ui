@@ -25,6 +25,7 @@ import { MessagesRoutingModule } from '../messages/messages-routing.module';
 import { BookRequestsComponent } from './book-requests/book-requests.component';
 import { RequestedBooksComponent } from './requested-books/requested-books.component';
 import { RequestsDashboardComponent } from './requests-dashboard/requests-dashboard.component';
+import { RequestsRoutingModule } from './requests-routing.module';
 
 
 
@@ -37,8 +38,7 @@ import { RequestsDashboardComponent } from './requests-dashboard/requests-dashbo
   ],
   imports: [
     CommonModule,
-    CommonModule,
-    MessagesRoutingModule,
+RequestsRoutingModule,
     CardModule,
     ButtonModule,
     MatIconModule,

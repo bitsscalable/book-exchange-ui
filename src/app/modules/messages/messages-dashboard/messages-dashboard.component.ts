@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { RequestsService } from '../requests.service';
 
 
 export interface Chats {
@@ -8,21 +9,7 @@ export interface Chats {
   unread: boolean;
 }
 
-const chats: Chats[] =  [
-  { name: 'Chat A', lastMessage: 'Hello there!',book:'abc', unread: true },
-  { name: 'Chat B', lastMessage: 'How are you?',book:'abc', unread: false },
-  { name: 'Chat C', lastMessage: 'Are you coming?',book:'abc', unread: true },
-  { name: 'Chat A', lastMessage: 'Hello there!',book:'abc', unread: true },
-  { name: 'Chat B', lastMessage: 'How are you?',book:'abc', unread: false },
-  { name: 'Chat C', lastMessage: 'Are you coming?',book:'abc', unread: true },
-  { name: 'Chat A', lastMessage: 'Hello there!',book:'abc', unread: true },
-  { name: 'Chat B', lastMessage: 'How are you?',book:'abc', unread: false },
-  { name: 'Chat C', lastMessage: 'Are you coming?',book:'abc', unread: true },
-  { name: 'Chat A', lastMessage: 'Hello there!',book:'abc', unread: true },
-  { name: 'Chat B', lastMessage: 'How are you?',book:'abc', unread: false },
-  { name: 'Chat C', lastMessage: 'Are you coming?',book:'abc', unread: true },
-  { name: 'Chat D', lastMessage: 'Let me know when you get this',book:'abc', unread: false }
-];
+ 
 
 @Component({
   selector: 'app-messages-dashboard',
@@ -31,20 +18,37 @@ const chats: Chats[] =  [
 })
 export class MessagesDashboardComponent implements OnInit{
   displayedColumns: string[] = ['name'];
-  dataSource = chats;
+  dataSource !: any;
+
 
   clickedRows = new Set<Chats>();
   chat : any;
 
+  constructor(private _service : RequestsService){
+
+  }
+
   rowClicked(row: Chats){
     this.clickedRows.clear();
     this.chat = row;
-    this.clickedRows.add(row);
+    // this.clickedRows.add(row);
+    console.log('chat',row)
   }
 
   items!: string[];
 
     ngOnInit() {
-        this.items = Array.from({ length: 1000 }).map((_, i) => `Item #${i}`);
+      this.getActiveChats();
     }
+
+    getActiveChats(){
+      this._service.getActiveChats().subscribe((res: any)=>{
+        console.log(res)
+        this.dataSource = res;
+      })
+    }
+
+    
+
+    
 }

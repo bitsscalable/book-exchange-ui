@@ -15,7 +15,7 @@ export const Endpoints = Object.freeze({
         GET_BOOK_REQUESTS:[booksContext,'getBookRequests'].join('/'),
         GET_ALL_TRANSACTIONS:[booksContext,'getAllTransactions'].join('/'),
         GET_SETTINGS:[settingsContext,'getPreferences'].join('/'),
-        GET_BOOK_COUNTS:[booksContext,'getBookCounts'].join('/'),
+        GET_BOOK_COUNTS:[booksContext,'getBookCounts'].join('/')
         
     },
        
