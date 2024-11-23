@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { BooksService } from '../../books/books.service';
 import { timeInterval } from 'rxjs';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-requested-books',
@@ -18,11 +19,13 @@ export class RequestedBooksComponent implements OnInit{
   currentBook !:any;
   visible: boolean = false;
   updateBookForm !: FormGroup;
+  initiate = false;
+  chat = null;
   
   activityValues: number[] = [0, 100];
 
   constructor(private _confirmationService:ConfirmationService, 
-    private _alert :MessageService, private _service: BooksService,
+    private _alert :MessageService, private _service: BooksService,private router:Router,
   private _fb:FormBuilder) {
   }
 
@@ -63,14 +66,20 @@ export class RequestedBooksComponent implements OnInit{
     
   }
 
-  sendMail(book: any) {
-    const email = book.uploadedBy; 
-    const subject = '📚 Our Book Request Was a Match! Let’s Connect!';
-    const body = 'Hii, '+sessionStorage.getItem('username');
-
-    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
+  initiateChat(book: any) {
+    this.initiate = true;
+    this.chat = book.uploadedBy
   }
 
 
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Escape') {
+      console.log('Global Escape key pressed!');
+      this.initiate = false;
+      this.chat = null;
+    }
+  }
+ 
 }

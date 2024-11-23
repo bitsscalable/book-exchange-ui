@@ -25,7 +25,6 @@ navItems: any;
       
       
     });
-    console.log('sessionStorage.getItem()',sessionStorage.getItem('username'))
     if(sessionStorage.getItem('username') === null && !this.sidebarVisible){
       this.dashboardService.getUserName().subscribe(res=>{
         sessionStorage.setItem('username',res);
@@ -34,11 +33,19 @@ navItems: any;
     }else{
       this.username = sessionStorage.getItem('username');
     }
+
+    if(sessionStorage.getItem('email') === null && !this.sidebarVisible){
+      this.dashboardService.getEmail().subscribe(res=>{
+        console.log('email',res)
+        sessionStorage.setItem('email',res);
+      })
+    }
+
     this.navItems= [
       { name: 'Dashboard', route: '/dashboard', icon: 'dashboard', call:'' },
       { name: 'Books', route: '/books', icon: 'books', call:'' },
       { name: 'Requests', route: '/requests', icon: 'pending',call:'' },
-      // { name: 'Settings', route: '/settings', icon: 'settings',call:'' },
+      { name: 'Messages', route: '/messages', icon: 'messages',call:'' },
       // { name: 'Support', route: '/support', icon: 'contact_support',call:'' },
       { name: 'Signout', route: '/login', icon: 'logout',call:'logout()'},
     ];

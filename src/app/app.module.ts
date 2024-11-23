@@ -28,6 +28,7 @@ import { BooksModule } from './modules/books/books.module';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { LoadingInterceptor } from './shared/interceptors/LoadingInterceptor';
 import { JwtInterceptor } from './shared/interceptors/JwtInterceptor';
+import { RequestsRoutingModule } from './modules/requests/requests-routing.module';
 
 
 
@@ -41,6 +42,7 @@ import { JwtInterceptor } from './shared/interceptors/JwtInterceptor';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RequestsRoutingModule,
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,

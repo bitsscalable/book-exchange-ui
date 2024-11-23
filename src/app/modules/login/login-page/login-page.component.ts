@@ -23,6 +23,7 @@ export class LoginPageComponent {
 
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('username');
+    sessionStorage.removeItem('email');
       this.registerForm = this.fb.group({
           username: [null, Validators.required],
           password: [null, [Validators.required, Validators.minLength(6)]]

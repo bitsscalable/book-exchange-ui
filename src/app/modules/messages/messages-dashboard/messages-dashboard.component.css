@@ -1,5 +1,5 @@
 .overview{
-    padding: 1%;
+    /* padding: 1%; */
 }
 .demo-table {
     width: 100%;
@@ -15,8 +15,8 @@
   
   .mat-mdc-row:hover .mat-mdc-cell {
     border-color: currentColor;
-    background-color: rgb(97, 93, 93);
-    color: whitesmoke;
+    background-color: rgb(226, 219, 219);
+    color: rgb(0, 0, 0);
   }
   
   .demo-row-is-clicked {
@@ -42,3 +42,9 @@
   background-color: #f1f1f1; /* Light gray background color on hover */
 }
 
+
+:host ::ng-deep {
+  .p-scroller-viewport {
+      flex: none;
+  }
+}
