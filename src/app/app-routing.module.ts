@@ -23,10 +23,6 @@ const routes: Routes = [
         path: 'support', loadChildren: () => import('./modules/support/support.module').then(m => m.SupportModule),
         canActivate: [authGuard]
       },
-      {
-        path: 'settings', loadChildren: () => import('./modules/settings/settings.module').then(m => m.SettingsModule),
-        canActivate: [authGuard]
-      },
       { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) }
   ];
