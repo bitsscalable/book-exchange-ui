@@ -19,10 +19,6 @@ const routes: Routes = [
         path: 'messages', loadChildren: () => import('./modules/messages/messages.module').then(m => m.MessagesModule),
         // canActivate: [authGuard]
       },
-      {
-        path: 'support', loadChildren: () => import('./modules/support/support.module').then(m => m.SupportModule),
-        canActivate: [authGuard]
-      },
       { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) }
   ];

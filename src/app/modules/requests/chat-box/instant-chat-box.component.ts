@@ -1,13 +1,13 @@
-import { AfterViewInit, Component, HostListener, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { RequestsService } from '../requests.service';
+import { AfterViewInit, Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { RequestsService } from '../../messages/requests.service';
 
 @Component({
-  selector: 'app-chat-box',
-  templateUrl: './chat-box.component.html',
-  styleUrl: './chat-box.component.css'
+  selector: 'app-request-chat-box',
+  templateUrl: './instant-chat-box.component.html',
+  styleUrl: './instant-chat-box.component.css'
 })
-export class ChatBoxComponent implements OnInit , OnChanges, OnDestroy{
+export class NewRequestChatBoxComponent implements OnInit, OnDestroy{
 @Input() chat: any;
 
   
@@ -20,25 +20,13 @@ export class ChatBoxComponent implements OnInit , OnChanges, OnDestroy{
     
   }
   ngOnDestroy(): void {
-    console.log('chat box destroyed')
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['chat']) {
-      console.log('Value changed:', changes['chat'].currentValue);
-      this.updateChats();
-    }
+    this.chat='';
+    this.chatHistory = []
+    this.socketService.closeConnection()
   }
 
   ngOnInit(): void {
-    
-    this.updateChats()
-  }
-
-  updateChats(){
     this.username = sessionStorage.getItem('email');
-    this.message = '';
-  this.chatHistory = [];
     if(this.chat){
       if(this.username){
         this.socketService.join(this.username,this.chat);
@@ -50,6 +38,9 @@ export class ChatBoxComponent implements OnInit , OnChanges, OnDestroy{
           this.chatHistory.push(data);  
         });
     }
+
+    
+    
   }
 
   @HostListener('document:keydown', ['$event'])
@@ -68,7 +59,7 @@ export class ChatBoxComponent implements OnInit , OnChanges, OnDestroy{
       timestamp: new Date().toISOString(),
     };
     
-    this.chatHistory[0].push(message); 
+    this.chatHistory.push(message); 
 
     let msg = {
       type: 'new_message',

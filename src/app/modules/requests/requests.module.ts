@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,11 +21,11 @@ import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
 import { TagModule } from 'primeng/tag';
 import { ToastModule } from 'primeng/toast';
-import { MessagesRoutingModule } from '../messages/messages-routing.module';
 import { BookRequestsComponent } from './book-requests/book-requests.component';
 import { RequestedBooksComponent } from './requested-books/requested-books.component';
 import { RequestsDashboardComponent } from './requests-dashboard/requests-dashboard.component';
 import { RequestsRoutingModule } from './requests-routing.module';
+import { NewRequestChatBoxComponent } from './chat-box/instant-chat-box.component';
 
 
 
@@ -34,13 +34,15 @@ import { RequestsRoutingModule } from './requests-routing.module';
     
     BookRequestsComponent,
     RequestedBooksComponent,
-    RequestsDashboardComponent
+    RequestsDashboardComponent,
+    NewRequestChatBoxComponent
   ],
   imports: [
     CommonModule,
-RequestsRoutingModule,
+    // MessagesModule,
     CardModule,
     ButtonModule,
+    RequestsRoutingModule,
     MatIconModule,
     ReactiveFormsModule,
     StepperModule,
@@ -60,6 +62,7 @@ RequestsRoutingModule,
     PaginatorModule,
     CalendarModule,
     IconFieldModule, InputIconModule, DropdownModule
-  ]
+  ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class RequestsModule { }

@@ -8,13 +8,7 @@
               <th mat-header-cell *matHeaderCellDef>Name</th>
               <td mat-cell *matCellDef="let element"><b>{{element}}</b></td>
             </ng-container>
-          
-
-           
-          
-
-            <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
-         
+        
             <tr
                     mat-row
                     (click)="rowClicked(row)"
@@ -23,29 +17,14 @@
                 ></tr>
           </table>
           
-              
-          <!-- <p-scroller 
-    [items]="dataSource" 
-    [itemSize]="50" 
-    scrollHeight="550px" 
-    styleClass="border-1 surface-border" 
-    [style]="{'width': '100%', 'height': '100%'}">
-    <ng-template pTemplate="item" let-item let-options="options">
-        <div 
-            style="height: 50px; text-align: left;" 
-            (click)="rowClicked(item)">
-            <mat-icon>portrait</mat-icon>{{ item }}
-        </div>
-    </ng-template>
-</p-scroller> -->
-
+            
               
         </p-card>
         
       
     </div>
-    <div class="col-sm-8"  >
-        <app-chat-box [chat]="chat"></app-chat-box>
+    <div class="col-sm-8"  *ngIf="chat!==undefined">
+        <app-chat-box [chat]="chat" ></app-chat-box>
     </div>
    </div>
 

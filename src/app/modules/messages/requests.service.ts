@@ -17,44 +17,27 @@ socket: any;
      this.socket = io('http://3.94.192.80:5000', {
       transports: ['websocket'], // Ensure we're using WebSocket transportwithCredentials: true
           });
-    // this.socket = new WebSocket('ws://http://3.94.192.80:5000'); // Replace with your server URL
-    // this.socket.onmessage = this.handleMessage.bind(this);
-    // this.socket.onopen = this.handleOpen.bind(this);
-    // this.socket.onerror = this.handleError.bind(this);
-    // this.socket.onclose = this.handleClose.bind(this);
   }
 
-  private handleMessage(event: MessageEvent) {
-    const data = JSON.parse(event.data);
-    this.messagesSubject.next(data);  // Push data to observers
-  }
-
-  private handleOpen() {
-    console.log('Connected to WebSocket server');
-  }
-
-  private handleError(error: Event) {
-    console.error('WebSocket error:', error);
-  }
-
-  private handleClose(event: CloseEvent) {
-    console.log('WebSocket closed:', event);
-  }
+ 
 
   // Send a message through the WebSocket
   sendMessage(message: any): void {
     console.log('paylod',JSON.stringify(message))
     
     this.socket.emit('new_message',message)
-    // this.socket.send(JSON.stringify(message));
   }
 
   
 
-  join():void{
+  join(username:String, peer:String):void{
+    console.log('join', {
+      username: username,
+      peer: peer
+                })
     this.socket.emit('join', {
-      username: 'userA',
-      peer: 'userB'
+      username: username,
+      peer: peer
                 });
   }
 
@@ -76,7 +59,9 @@ socket: any;
   }
 
   getActiveChats(): Observable<any> {
-    return this._rest.get<any>('http://3.94.192.80:5000/api/messages/userA/channels');
+    let user = sessionStorage.getItem('email')
+    // let user = 'userA'
+    return this._rest.get<any>('http://3.94.192.80:5000/api/messages/'+user+'/channels');
   }
 
 }

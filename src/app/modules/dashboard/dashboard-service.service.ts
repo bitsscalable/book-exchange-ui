@@ -15,6 +15,10 @@ export class DashboardServiceService {
     return this._rest.get<string>(Endpoints.GET.GET_USER_NAME,{ responseType: 'text' as 'json' });
   }
 
+  getEmail(){
+    return this._rest.get<string>(Endpoints.GET.GET_EMAIL,{ responseType: 'text' as 'json' });
+  }
+
   getBookCounts(): Observable<number[]>{
     return this._rest.get<number[]>(Endpoints.GET.GET_BOOK_COUNTS);
   }
