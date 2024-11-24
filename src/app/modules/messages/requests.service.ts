@@ -14,7 +14,7 @@ export class RequestsService {
 socket: any;
 
   constructor(private _rest:HttpClient) {
-     this.socket = io('http://3.94.192.80:5000', {
+     this.socket = io('http://http://54.80.98.85:5000', {
       transports: ['websocket'], // Ensure we're using WebSocket transportwithCredentials: true
           });
   }
@@ -61,7 +61,7 @@ socket: any;
   getActiveChats(): Observable<any> {
     let user = sessionStorage.getItem('email')
     // let user = 'userA'
-    return this._rest.get<any>('http://3.94.192.80:5000/api/messages/'+user+'/channels');
+    return this._rest.get<any>('http://http://54.80.98.85:5000/api/messages/'+user+'/channels');
   }
 
 }

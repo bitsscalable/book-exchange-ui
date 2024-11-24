@@ -1,5 +1,5 @@
-const booksServiceURI = 'http://localhost:8081/api';
-const usersServiceURI = 'http://localhost:8080/api';
+const booksServiceURI = 'http://54.80.98.85:8081/api';
+const usersServiceURI = 'http://54.80.98.85:8080/api';
 
 const authContext = usersServiceURI+'/auth';
 const booksContext = booksServiceURI+'/books';

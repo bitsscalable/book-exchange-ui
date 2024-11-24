@@ -13,7 +13,7 @@ export class AuthorizationService {
   constructor(private _rest : HttpClient, private router: Router) { }
 
   login(username: string, password: string) {
-    return this._rest.post('http://localhost:8080/auth/login', { username, password })
+    return this._rest.post('http://54.80.98.85:8080/auth/login', { username, password })
       .subscribe((response: any) => {
         sessionStorage.setItem('token', response.token); // Save JWT to session storage. so that when tab is closed user is logged out
         this.router.navigate(['/dashboard']); // Redirect to dashboard upon success
